@@ -65,3 +65,60 @@ body[data-page=focus][data-focus-view=presets] .preset-points>span{display:grid;
  body[data-page=focus][data-focus-view=presets] .setup-footer{display:flex;justify-content:flex-end;padding:0 18px 24px}
  body[data-page=focus][data-focus-view=presets] .setup-footer .primary{position:relative;right:auto;bottom:auto}
 }
+
+/* Custom traveler: three paper strips attached to the portrait card. */
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+body[data-mode=setup][data-page=focus][data-focus-view=custom] .setup-card{inset:0;width:auto;padding:0;overflow:auto;border:0;border-radius:0;background:transparent;box-shadow:none}
+body[data-page=focus][data-focus-view=custom] .setup-steps{display:none}
+body[data-page=focus][data-focus-view=custom] #setupBody{flex:none;overflow:visible;margin:0;padding:0}
+body[data-page=focus][data-focus-view=custom] .setup-card>.back,
+body[data-page=focus][data-focus-view=custom] .setup-footer .primary{
+ position:fixed;z-index:3;width:clamp(180px,18vw,360px);height:clamp(48px,7.2vh,82px);min-height:48px;min-width:0;padding:0 22px;border:0;border-radius:0;box-shadow:none;
+ background:transparent url('/art/focus-nav.svg') center/100% 100% no-repeat;color:#111!important;font:700 clamp(13px,1.1vw,22px) Arial,sans-serif;
+}
+body[data-page=focus][data-focus-view=custom] .setup-card>.back{left:-1.5vw;top:6vh}
+body[data-page=focus][data-focus-view=custom] .setup-footer .primary{right:6vw;bottom:5vh}
+body[data-page=focus][data-focus-view=custom] .setup-card>.back:hover,
+body[data-page=focus][data-focus-view=custom] .setup-footer .primary:hover{background-color:transparent;background-image:url('/art/focus-nav.svg');filter:drop-shadow(0 3px 1px #0002)}
+body[data-page=focus][data-focus-view=custom] .setup-footer{position:static;margin:0;padding:0;background:transparent!important}
+.custom-focus-layout{display:grid;grid-template-columns:24% 1fr;width:94vw;height:71vh;min-height:420px;margin:14.5vh 2vw 14.5vh 4vw}
+.custom-preview{position:relative;z-index:1;min-width:0;height:100%;background:url('/art/custom-portrait-frame.svg') center/100% 100% no-repeat}
+.custom-preview>strong{position:absolute;top:84.5%;left:8%;right:8%;height:12%;display:flex;align-items:center;justify-content:center;color:#111;font:400 clamp(24px,2.7vw,55px) 'Microsoft YaHei',sans-serif}
+body[data-page=focus][data-focus-view=custom] .custom-preview #portraitWrap{
+ position:absolute;inset:4% 9% 19%;left:9%;top:4%;width:82%;height:77%;display:flex!important;align-items:center;justify-content:center;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;
+}
+body[data-page=focus][data-focus-view=custom] .custom-preview #portrait{width:100%;height:auto;aspect-ratio:240/280}
+body[data-page=focus][data-focus-view=custom] .custom-preview #portraitWrap>span{display:none}
+.custom-stat-list{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:3vh;margin-left:-1.8vw}
+.custom-stat-row{display:grid;grid-template-columns:43% 17% 1fr;gap:1.5vw;align-items:center;min-width:0;padding:7px 4vw 7px 8vw;background:url('/art/custom-stat-paper.svg') center/100% 100% no-repeat}
+.custom-stat-description{text-align:center;min-width:0}
+.custom-stat-description h2{font:400 clamp(38px,6.5vw,132px)/1.08 'Microsoft YaHei','Segoe UI',sans-serif;color:#050505;white-space:nowrap}
+body[data-page=focus][data-focus-view=custom] .custom-stat-description p{font:400 clamp(11px,1.05vw,22px)/1.55 'Microsoft YaHei',sans-serif;color:#999;margin-top:4px;white-space:nowrap}
+.custom-stat-control{display:grid;grid-template-columns:26% 48% 26%;align-items:center;width:auto;height:100%;aspect-ratio:1;max-width:100%;border:2px solid #222;outline:1px solid #555;outline-offset:-7px;background:#fff}
+.custom-stat-control output{font:400 clamp(50px,6.5vw,135px)/1 Arial,sans-serif;color:#000;text-align:center;min-width:0}
+.custom-stat-control button{display:grid;place-items:center;min-width:0;min-height:44px;width:100%;height:70%;padding:0;border:0;border-radius:0;background:transparent;color:#999;font:400 clamp(34px,4.3vw,88px)/1 Arial,sans-serif}
+.custom-stat-control button:hover:not(:disabled){background:transparent;color:#222}
+.custom-stat-control button:active:not(:disabled){transform:scale(.92)}
+.custom-stat-control button:disabled{opacity:.22;cursor:default}
+@media(min-width:761px) and (max-width:1200px){
+ .custom-stat-row{padding-left:4vw;grid-template-columns:48% 23% 1fr;gap:2vw}
+ .custom-stat-description h2{font-size:6.8vw}
+ body[data-page=focus][data-focus-view=custom] .custom-stat-description p{font-size:11px;white-space:normal}
+ .custom-stat-control{height:auto;width:100%;aspect-ratio:1}
+}
+@media(max-width:760px){
+ body[data-mode=setup][data-page=focus][data-focus-view=custom] .setup-card{inset:0!important;left:0!important;right:0!important;width:100%!important;padding:0}
+ body[data-page=focus][data-focus-view=custom] .setup-card>.back{position:absolute;left:-6px;top:18px;width:155px;height:48px}
+ .custom-focus-layout{grid-template-columns:1fr;width:94%;height:auto;min-height:0;margin:88px auto 0;gap:22px}
+ .custom-preview{width:180px;height:282px;margin:0 auto}
+ .custom-preview>strong{font-size:23px}
+ .custom-stat-list{margin-left:0;gap:16px}
+ .custom-stat-row{min-height:124px;grid-template-columns:minmax(0,1fr) 106px;gap:12px;padding:10px 22px 10px 16px}
+ .custom-stat-description h2{font-size:43px}
+ body[data-page=focus][data-focus-view=custom] .custom-stat-description p{font-size:10px;white-space:normal;line-height:1.6}
+ .custom-stat-control{width:106px;height:106px}
+ .custom-stat-control output{font-size:59px}
+ .custom-stat-control button{font-size:38px;min-height:44px}
+ body[data-page=focus][data-focus-view=custom] .setup-footer{display:flex;justify-content:flex-end;padding:24px 18px}
+ body[data-page=focus][data-focus-view=custom] .setup-footer .primary{position:relative;right:auto;bottom:auto;width:190px;height:50px}
+}
