@@ -122,3 +122,8 @@ body[data-page=focus][data-focus-view=custom] .custom-stat-description p{font:40
  body[data-page=focus][data-focus-view=custom] .setup-footer{display:flex;justify-content:flex-end;padding:24px 18px}
  body[data-page=focus][data-focus-view=custom] .setup-footer .primary{position:relative;right:auto;bottom:auto;width:190px;height:50px}
 }
+
+/* Plain white title buttons, including the disabled Continue state. */
+.title-actions .ticket{background:#fff!important;border:1px solid #b9a7cc!important;border-radius:3px!important;justify-content:center;text-align:center}
+.title-actions .ticket:disabled{opacity:1;filter:none;color:#999!important;border-color:#ccc!important}
+.title-actions .ticket:disabled small{color:#999}
