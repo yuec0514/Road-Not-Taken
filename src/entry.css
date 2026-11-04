@@ -1,3 +1,62 @@
 /* Only the standalone completion panel adds layout; original entry styles are preserved. */
 .entry-actions{display:flex;justify-content:flex-end;gap:12px;align-items:center;margin-top:24px}
 .drawer-card .small-copy{margin-top:18px}
+
+/* Traveler type selection: paper frames and ribbons from the supplied reference. */
+body[data-mode=setup][data-page=focus][data-focus-view=presets] .setup-card{
+ inset:0;width:auto;padding:0;overflow:auto;border:0;border-radius:0;background:transparent;box-shadow:none;
+}
+body[data-page=focus][data-focus-view=presets] .setup-steps{display:none}
+body[data-page=focus][data-focus-view=presets] .setup-card>.back,
+body[data-page=focus][data-focus-view=presets] .setup-footer .primary{
+ position:fixed;z-index:2;width:clamp(180px,18vw,360px);height:clamp(48px,7.2vh,82px);min-height:48px;padding:0 22px;
+ border:0;border-radius:0;box-shadow:none;background:transparent url('/art/focus-nav.svg') center/100% 100% no-repeat;
+ color:#111!important;font:700 clamp(13px,1.1vw,22px) 'Arial','Microsoft YaHei',sans-serif;
+}
+body[data-page=focus][data-focus-view=presets] .setup-card>.back{left:-1.5vw;top:6vh}
+body[data-page=focus][data-focus-view=presets] .setup-footer .primary{right:9vw;bottom:8.5vh;min-width:0}
+body[data-page=focus][data-focus-view=presets] .setup-footer .primary:hover,
+body[data-page=focus][data-focus-view=presets] .setup-card>.back:hover{background-image:url('/art/focus-nav.svg');background-color:transparent;filter:drop-shadow(0 3px 1px #0002)}
+body[data-page=focus][data-focus-view=presets] #setupBody{flex:none;overflow:visible;margin:0;padding:0}
+body[data-page=focus][data-focus-view=presets] .setup-footer{position:static;background:transparent!important;margin:0;padding:0}
+body[data-page=focus][data-focus-view=presets] .focus-card-grid{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4.5vw;width:82vw;max-width:1680px;margin:15.5vh auto 0;padding:0 0 21vh;
+}
+.focus-card-slot{position:relative;min-width:0;padding-top:6.5vh}
+body[data-page=focus][data-focus-view=presets] .focus-card{
+ position:relative;width:100%;aspect-ratio:327/563.4;display:block;margin:0;padding:0;min-height:0;
+ background:transparent url('/art/focus-card-default.svg') center/100% 100% no-repeat;
+ border:0;border-radius:0;box-shadow:none;color:#111;transition:filter .15s;
+}
+body[data-page=focus][data-focus-view=presets] .focus-card[aria-pressed=true]{background:transparent url('/art/focus-card-selected.svg') center/100% 100% no-repeat;border:0;box-shadow:none}
+body[data-page=focus][data-focus-view=presets] .focus-card[aria-pressed=true]::before{content:none}
+body[data-page=focus][data-focus-view=presets] .focus-card:hover{filter:drop-shadow(0 4px 3px #0002)}
+body[data-page=focus][data-focus-view=presets] .focus-card:active{transform:none}
+body[data-page=focus][data-focus-view=presets] .focus-card canvas{position:absolute;left:16%;top:10%;width:68%;height:auto;aspect-ratio:180/210;margin:0;pointer-events:none}
+body[data-page=focus][data-focus-view=presets] .focus-card strong{position:absolute;left:8%;right:8%;top:84.5%;height:12%;display:flex;align-items:center;justify-content:center;font-family:'Microsoft YaHei','Segoe UI',sans-serif;font-size:clamp(20px,2.1vw,43px);font-weight:400;letter-spacing:0;color:#111}
+.focus-selection-marker{position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(24px,2.4vw,48px);height:clamp(22px,2.15vw,43px);background:#171717;clip-path:polygon(0 0,100% 0,50% 100%);visibility:hidden}
+.focus-selection-marker::after{content:'';position:absolute;inset:3px 4px 6px;background:#fff;clip-path:polygon(0 0,100% 0,50% 100%)}
+.focus-card-slot[data-selected=true] .focus-selection-marker{visibility:visible}
+body[data-page=focus][data-focus-view=presets] .preset-points{position:absolute;top:calc(100% + 2.8vh);left:7%;right:7%;width:auto;padding:0;display:flex;justify-content:space-between;gap:8px;border:0}
+body[data-page=focus][data-focus-view=presets] .preset-points[hidden]{display:none}
+body[data-page=focus][data-focus-view=presets] .preset-points>span{display:grid;place-items:center;width:28%;aspect-ratio:1;background:white;border:1.7px solid #222;color:#111;font:400 clamp(22px,2.5vw,50px) 'Arial',sans-serif}
+@media(min-width:761px) and (max-aspect-ratio:3/2){
+ body[data-page=focus][data-focus-view=presets] .focus-card-grid{width:88vw;gap:3vw;margin-top:15vh}
+ body[data-page=focus][data-focus-view=presets] .setup-footer .primary{right:6vw;bottom:5vh}
+}
+@media(min-width:761px) and (max-height:650px){
+ body[data-page=focus][data-focus-view=presets] .focus-card-grid{width:min(76vw,calc(98vh * 2.5));gap:3vw;margin-top:10vh;padding-bottom:27vh}
+ .focus-card-slot{padding-top:7vh}
+ body[data-page=focus][data-focus-view=presets] .setup-footer .primary{bottom:3vh;right:3vw}
+}
+@media(max-width:760px){
+ body[data-mode=setup][data-page=focus][data-focus-view=presets] .setup-card{inset:0!important;left:0!important;right:0!important;width:100%!important;padding:0}
+ body[data-page=focus][data-focus-view=presets] .setup-card>.back{position:absolute;top:18px;left:-6px;width:155px;height:48px}
+ body[data-page=focus][data-focus-view=presets] .focus-card-grid{width:90%;grid-template-columns:repeat(2,minmax(0,1fr));gap:88px 18px;margin:100px auto 0;padding-bottom:160px}
+ .focus-card-slot{padding-top:30px}
+ .focus-selection-marker{width:25px;height:24px}
+ body[data-page=focus][data-focus-view=presets] .focus-card strong{font-size:clamp(19px,5vw,29px)}
+ body[data-page=focus][data-focus-view=presets] .preset-points{top:calc(100% + 12px);gap:6px}
+ body[data-page=focus][data-focus-view=presets] .preset-points>span{font-size:24px}
+ body[data-page=focus][data-focus-view=presets] .setup-footer .primary{right:18px;bottom:18px;width:190px;height:50px;filter:drop-shadow(0 2px 5px #ede6fa)}
+}
