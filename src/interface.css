@@ -1,0 +1,56 @@
+/* Life stays in one stable three-column frame; decisions use the top layer. */
+#playLayout{display:contents}
+body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #playLayout{position:fixed;inset:90px max(18px,calc((100vw - 1760px)/2)) 22px;display:grid;grid-template-columns:220px minmax(0,1fr) 280px;gap:18px}
+body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #stage{position:relative;inset:auto;width:100%;height:100%;min-width:0;min-height:0}
+body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #sidebar{position:relative;inset:auto;width:auto;max-height:none;padding:22px 20px;min-height:0}
+#identityBoard{min-height:0;overflow:auto;background:var(--paper);border:1px solid #d3c8dc;border-radius:10px;padding:20px 18px;scrollbar-width:thin;scrollbar-color:#c4b5cd transparent}
+#identityBoard>header{font-size:15px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--line);padding-bottom:14px}
+#identityBoard>header span{font-size:10px;color:#796584;letter-spacing:1px}
+#identityBoard #portraitWrap{position:relative;display:block;inset:auto;width:100%;height:165px;z-index:auto}
+#identityBoard #portrait{display:block;width:145px;height:165px;margin:auto}
+#identityBoard #portraitWrap>span{display:none}
+.profile-context h2{font-size:21px;line-height:1.5}
+.profile-context p{font-size:11px;margin-top:6px}
+#identityBoard .balance{margin-top:20px;padding-top:17px}
+#identityBoard .balance>div{flex-wrap:wrap;gap:6px;font-size:11px}
+#identityBoard .balance>div>span:last-child{margin-left:0;flex-basis:100%;margin-top:8px}
+#identityBoard .balance section{display:grid;grid-template-columns:1fr;gap:18px}
+#identityBoard .trait span{font-size:12px;align-self:center}
+#identityBoard .trait b{font-size:25px}
+#identityBoard .trait meter{height:6px}
+#identityBoard .chapter-progress{padding-top:19px;border-top:1px solid var(--line);margin-top:23px;line-height:1.7}
+#sidebar h1{font-size:24px;line-height:1.5;margin:10px 0 14px}
+#sidebar .activity-info>p{font-size:12px;line-height:1.85}
+#sidebar .focus-tabs{margin-top:20px}
+#sidebar .focus-tabs button{padding:9px 7px}
+#sidebar .primary{margin-top:18px}
+.info-section{border-top:1px solid var(--line);padding-top:20px;margin-top:25px}
+.info-section h2{font-family:inherit;font-size:14px;font-weight:500;margin-bottom:14px}
+.parallel-info p{font-size:12px;line-height:1.85;margin-top:10px}
+.recent-info>button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #e7dfe8;border-radius:0;padding:12px 0;background:none}
+.recent-info>button strong{display:block;font-size:12px;font-weight:400;line-height:1.7}
+.recent-info>button small{display:block;font-size:10px;margin-top:7px;color:#796584}
+#sidebar .event-lead{font-size:12px}
+#sidebar .result-change{padding:13px 12px;margin:19px 0}
+#sidebar .meanwhile{margin-top:20px}
+#choiceDialog{width:min(640px,calc(100vw - 40px));max-height:calc(100dvh - 40px);padding:0;border:1px solid #cdbed7;border-radius:12px;background:var(--paper);color:var(--ink);box-shadow:0 22px 80px #31233930;overflow:auto;scrollbar-width:thin;overscroll-behavior:contain}
+#choiceDialog::backdrop{background:#30263c61;backdrop-filter:blur(1px)}
+.decision-top{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:14px 25px;border-bottom:1px solid var(--line);background:var(--paper);z-index:1}
+.decision-top>span{font-size:11px;color:#796584;letter-spacing:1px}
+.decision-top .text-button{font-size:12px;color:#6f5d7b}
+.decision-body{padding:24px 28px 28px}
+.decision-body h1{font-size:30px;line-height:1.5;margin:0 0 14px}
+.decision-body>.event-lead{font-size:14px;color:#6f5d7b;line-height:1.85}
+#choiceDialog .choices{gap:12px;margin-top:24px}
+#choiceDialog .choices button{position:relative;padding:17px 19px;background:#f4eff7;border-color:#dbcfE3;overflow:hidden}
+#choiceDialog .choices button strong{font-size:15px;color:#4d435c;line-height:1.65}
+#choiceDialog .choices button span,#choiceDialog .choices button small{font-size:12px;line-height:1.8;color:#6f5d7b;margin-top:9px}
+#choiceDialog .choices button:hover:not(:disabled){background:#e9dfef;border-color:#b49bc5}
+#choiceDialog .choices button.executing{opacity:1;background:#e6d9ee;border-color:#ac91bc}
+#choiceDialog .choices button.executing:after{content:'';position:absolute;bottom:0;left:0;height:3px;background:#9274a7;animation:choice-action .9s linear forwards}
+@keyframes choice-action{from{width:0}to{width:100%}}
+@media(max-width:1190px) and (min-width:1001px){body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #playLayout{grid-template-columns:188px minmax(0,1fr) 248px;gap:14px}#identityBoard{padding:17px 14px}body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #sidebar{padding:20px 17px}}
+@media(max-width:1000px) and (min-width:701px){body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #playLayout{grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:130px minmax(0,1fr);gap:14px}#identityBoard{grid-column:1/-1;display:grid;grid-template-columns:130px 85px minmax(0,1fr);gap:12px;overflow:hidden;padding:12px 16px}#identityBoard>header{border:0;justify-content:center}#identityBoard #portraitWrap{height:106px}#identityBoard #portrait{width:90px;height:106px}#identityBody{display:grid;grid-template-columns:130px minmax(0,1fr);align-items:center;column-gap:18px}.profile-context h2{font-size:18px}#identityBoard .balance{border:0;margin:0;padding:0}#identityBoard .balance>div>span:last-child{margin:0 0 0 auto;flex-basis:auto}#identityBoard .balance section{display:flex;gap:14px;margin-top:12px}#identityBoard .trait span{font-size:10px}#identityBoard .trait b{font-size:21px}#identityBoard .chapter-progress{grid-column:1/-1;margin:0;padding-top:0;border:0}#identityBoard .chapter-progress>div{margin-top:5px}}
+@media(max-height:760px) and (min-width:1001px){body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #playLayout{top:77px}#identityBoard #portraitWrap{height:140px}#identityBoard #portrait{width:123px;height:140px}#identityBoard .balance section{gap:12px}#identityBoard .chapter-progress{margin-top:18px;padding-top:15px}}
+@media(max-width:700px){body:is([data-mode=life],[data-mode=choice],[data-mode=result]){overflow:auto}body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #playLayout{position:relative;inset:auto;display:flex;flex-direction:column;gap:14px;margin:76px 12px 18px}#identityBoard{display:flex;align-items:center;gap:12px;padding:12px;overflow:visible}#identityBoard>header{display:none}#profilePortraitSlot{width:72px;flex:none}#identityBoard #portraitWrap{height:86px}#identityBoard #portrait{width:72px;height:86px}#identityBody{min-width:0;flex:1}.profile-context h2{font-size:16px}.profile-context p{margin-top:2px;font-size:10px}#identityBoard .balance{border:0;margin:7px 0 0;padding:0}#identityBoard .balance>div{font-size:10px;flex-wrap:nowrap}#identityBoard .balance>div>span:last-child{margin:0 0 0 auto;flex-basis:auto}#identityBoard .balance section{display:flex;gap:10px;margin-top:8px}#identityBoard .trait span{font-size:10px}#identityBoard .trait b{font-size:19px}#identityBoard .chapter-progress{border:0;padding:0;margin-top:10px}body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #stage{height:390px;flex:none}body:is([data-mode=life],[data-mode=choice],[data-mode=result]) #sidebar{overflow:visible;padding:20px}.decision-top{padding:10px 17px}.decision-body{padding:20px}.decision-body h1{font-size:26px}#choiceDialog{width:calc(100vw - 24px);max-height:calc(100dvh - 24px)}#choiceDialog .choices button{padding:15px}}
+@media(prefers-reduced-motion:reduce){#choiceDialog .choices button.executing:after{animation:none;width:100%}}

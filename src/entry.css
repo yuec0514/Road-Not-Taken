@@ -1,0 +1,3 @@
+/* Only the standalone completion panel adds layout; original entry styles are preserved. */
+.entry-actions{display:flex;justify-content:flex-end;gap:12px;align-items:center;margin-top:24px}
+.drawer-card .small-copy{margin-top:18px}
