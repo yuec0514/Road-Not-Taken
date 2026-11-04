@@ -10,8 +10,8 @@ const read=(key:string)=>{try{return JSON.parse(localStorage.getItem(key)||'null
 function write(key:string,value:unknown){try{localStorage.setItem(key,JSON.stringify(value));}catch{/* Private/file modes may disable storage; the full flow remains usable. */}}
 const STAT_MIN=1,STAT_MAX=7,STAT_BUDGET=9;
 const customStatNames=['自由','能力','归属'];
-const defaults:Initial={context:'rent',stats:[3,3,3],color:'#a99ac6',body:1,height:1,face:0,accessory:0,seed:42719};
-let initial=structuredClone(defaults),step=1,focus:'explore'|'craft'|'connect'='explore',focusCustom=false,mode:'title'|'setup'='title',drawerReturn:HTMLElement|null=null;
+const defaults:Initial={context:'rent',stats:[2,5,2],color:'#a99ac6',body:1,height:1,face:0,accessory:0,seed:42719};
+let initial=structuredClone(defaults),step=1,focus:'explore'|'craft'|'connect'='craft',focusCustom=false,mode:'title'|'setup'='title',drawerReturn:HTMLElement|null=null;
 let sound=false,audio:AudioContext|undefined;
 const settings=read('road-entry-settings-v1');
 let pixel=Number(settings?.pixel)||2,reduceMotion=settings?.reduceMotion??matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -23,7 +23,7 @@ function validDraft(draft:any):draft is {initial:Initial;step:number;focusCustom
 function saveDraft(){if(mode==='setup')write('road-entry-draft-v1',{initial,step,focusCustom,flowVersion:2});}
 function openTitle(){saveDraft();setMode('title');$('#drawer').hidden=true;const saved=read('road-entry-draft-v1');
  $('#screen').innerHTML=`<section class="title-card"><div class="eyebrow">未行之路 · 一段由你走出的生活</div><h1>Road Not Taken</h1><p class="title-line">未走的路，还在世界里。</p><div class="title-actions"><button class="ticket primary" id="newJourney"><span>开启旅程<small>NEW JOURNEY</small></span></button><button class="ticket secondary" id="resumeJourney" ${validDraft(saved)?'':'disabled'}><span>继续旅程<small>${validDraft(saved)?'继续开局准备':'CONTINUE'}</small></span></button><button class="ticket secondary" id="gallery"><span>旅程收藏<small>COLLECTION</small></span></button></div><button class="text-button title-settings" id="titleSettings">画面与声音</button><p class="edition">开局准备独立演示 · 基于 0.6.0</p></section>`;
- $('#newJourney').onclick=()=>{initial=structuredClone(defaults);step=1;focusCustom=false;focus='explore';renderSetup();};
+ $('#newJourney').onclick=()=>{initial=structuredClone(defaults);step=1;focusCustom=false;updateFocus();renderSetup();};
  if(validDraft(saved))$('#resumeJourney').onclick=()=>{initial=structuredClone(saved.initial);initial.stats=restoreStats(initial.stats);step=saved.flowVersion===2?saved.step:([3,1,2][saved.step-1]);focusCustom=!!saved.focusCustom;updateFocus();renderSetup();};
  $('#gallery').onclick=openGallery;$('#titleSettings').onclick=openSettings;
 }
