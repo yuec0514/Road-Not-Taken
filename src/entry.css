@@ -123,7 +123,16 @@ body[data-page=focus][data-focus-view=custom] .custom-stat-description p{font:40
  body[data-page=focus][data-focus-view=custom] .setup-footer .primary{position:relative;right:auto;bottom:auto;width:190px;height:50px}
 }
 
-/* Plain white title buttons, including the disabled Continue state. */
-.title-actions .ticket{background:#fff!important;border:1px solid #b9a7cc!important;border-radius:3px!important;justify-content:center;text-align:center}
-.title-actions .ticket:disabled{opacity:1;filter:none;color:#999!important;border-color:#ccc!important}
+/* Title menu ticket and selection pointer converted from the supplied PDF. */
+.title-actions .ticket{position:relative;overflow:visible;background:transparent url('/art/title-menu-ticket.svg') center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;justify-content:center;text-align:center;padding:12px 22px 12px 58px}
+.title-actions .ticket>span{width:100%;text-align:center}
+.title-actions .ticket::before{content:'';position:absolute;left:-49px;top:50%;width:36px;height:42px;transform:translateY(-50%);background:url('/art/title-menu-pointer.svg') center/100% 100% no-repeat;visibility:hidden;pointer-events:none}
+.title-actions .ticket[data-selected=true]:not(:disabled)::before{visibility:visible}
+.title-actions .ticket:hover:not(:disabled),.title-actions .ticket:active:not(:disabled){transform:none;filter:none}
+.title-actions .ticket:disabled{opacity:1;filter:none;color:#999!important}
 .title-actions .ticket:disabled small{color:#999}
+@media(max-width:760px){
+ .title-actions{margin-left:8px;max-width:calc(100% - 8px)}
+ .title-actions .ticket{padding-left:50px;padding-right:18px}
+ .title-actions .ticket::before{width:22px;height:30px;left:-28px}
+}
