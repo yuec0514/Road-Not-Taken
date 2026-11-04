@@ -2,7 +2,7 @@
 @font-face{font-family:Audiowide;src:url('./assets/Audiowide-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 :root{--ink:#45345b;--muted:#79638f;--accent:#7651b6;--paper:#fffdf5;--line:#c7b6d9;background:#ede6fa;color:var(--ink);font-family:'Trebuchet MS','Microsoft YaHei','Segoe UI',sans-serif}
 #storybookBackdrop{position:fixed;inset:0;z-index:0;background:url('/art/cloud-islands-background.png') center/cover no-repeat;pointer-events:none;opacity:.4}
-body[data-mode=title]:has(#drawer[hidden]) #storybookBackdrop{opacity:1}
+body[data-mode=title]:has(#drawer[hidden]) #storybookBackdrop{background-image:url('/art/title-gradient-background.png');opacity:1}
 body[data-mode=title] #stage,body[data-mode=setup] #stage{display:none}
 button{border-radius:4px;border-color:#b9a7cc;min-height:44px}
 button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #7e53be;outline-offset:4px}

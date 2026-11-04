@@ -66,6 +66,6 @@ $('#drawer').addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=
 for(const event of ['click','input','change'])document.addEventListener(event,saveDraft);
 window.addEventListener('beforeunload',saveDraft);
 openTitle();requestAnimationFrame(portrait.frame);
-const art=new Image();art.src='./art/cloud-islands-background.png';
+const art=new Image();art.src='./art/title-gradient-background.png';
 const ticket=new Image();ticket.src='./art/travel-ticket.png';
 void Promise.all([document.fonts.ready,art.decode().catch(()=>{}),ticket.decode().catch(()=>{})]).then(()=>requestAnimationFrame(()=>{portrait.render();document.querySelector('#loading')?.remove();document.body.classList.remove('booting');}));
